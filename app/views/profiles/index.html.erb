@@ -4,8 +4,10 @@
     <p>You have no posts! <%# button_to 'Create a Post', new_post_path, :method => :get %></p>
 <% else %>
     <% @posts.each do |post| %>
-        <p>@<%= link_to post.user.name, users_path %></p>
-        <p><%= link_to post.caption, post_path(post) %></p>
+        <%= link_to post_path(post) do %>
+            <%= image_tag post.image %>
+        <% end %>
+        <p>@<%= link_to post.user.name, users_path %> -- <%= post.caption %></p>
         <br><br>
     <% end %>
 <% end %>
