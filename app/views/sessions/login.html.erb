@@ -1,16 +1,16 @@
 <h1>Facegram</h1>
-<br><br><br>
+<br><br>
 
-<%= form_for(:session, url: sessions_path) do |f| %>
-    <%= f.label :username %>
-    <%= f.text_field :username %>
-    <br><br>
+<%= form_tag '/login' do %>
+   <%= label_tag :username%>
+   <%= text_field_tag :username %>
+   <br><br>
 
-    <%= f.label :password %>
-    <%= f.password_field :password %>
-    <br><br>
+   <%= label_tag :password%>
+   <%= password_field_tag :password%>
+   <br><br>
 
-    <%= f.submit "Log In" %>
-<% end %>
+   <%= submit_tag "Log In"%>
+<%end%>
 
 <p>New user? <%= link_to "Sign up!", signup_path %></p>

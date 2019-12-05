@@ -11,6 +11,7 @@ class SessionsController < ApplicationController
         else
             flash[:message] = "Oops! That login wasn't quite right... Try again!"
             render :login       # '/login'
+        end
     end
 
     def logout      # destroy
