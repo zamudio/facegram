@@ -12,12 +12,4 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#login'
   post '/login', to: 'sessions#create'
   get '/logout', to: 'sessions#logout', as: 'logout'
-
-  # tiff
-  # post '/signup', to: "users#new", as: 'signup'
-  # get '/logout', to: 'sessions#logout', as: 'logout'
-
-  # taylor
-  # resources :sessions   # restrict?
-
 end
