@@ -3,16 +3,18 @@ class ApplicationController < ActionController::Base
     helper_method :logged_in?
 
     def logged_in?
-        !current_user.nil?  
+        !session[:user_id]
     end
 
-    def authorized
-        redirect_to '/welcome' unless logged_in?
+    def redirect_user
+        if !logged_in?
+            redirect_to '/login'
+        end
     end
-
-    private
 
     def current_user
-        @current_account ||= Account.find(session[:user_id]) if session[:user_id]
+        if logged_in?
+            User.find(session[:id])
+        end
     end
 end

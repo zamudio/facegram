@@ -1,0 +1,9 @@
+<%= form_for @post do |f| %>
+    <%= f.label :caption %>
+    <%= f.text_field :caption %>
+    <br><br>
+
+    <%# hashtag collection select  %>
+
+    <%= f.submit "Create Post" %>
+<% end %>
