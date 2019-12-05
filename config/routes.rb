@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  root 'sessions#login'
+
   resources :posts
   get '/home', to: 'posts#index'
 
