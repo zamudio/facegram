@@ -1,7 +1,7 @@
 <h1> Welcome, <%= @user.username %>!</h1>
 
 <% if (@posts.length == 0) %>
-    <p>There are currently no posts! <%# button_to 'Create a Post', new_post_path, :method => :get %></p>
+    <p>You have no posts! <%# button_to 'Create a Post', new_post_path, :method => :get %></p>
 <% else %>
     <% @posts.each do |post| %>
         <p><%= link_to post.caption, post_path(post) %></p>

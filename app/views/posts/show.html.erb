@@ -2,5 +2,6 @@
 <br><br>
 
 <!-- button_to defaults to post, so must change to GET -->
+<%= button_to 'Home', profiles_path, :method => :get %>
 <%= button_to "Edit", edit_post_path, :method => :get %>
 <%= button_to 'Delete', @post, :method => :delete %>

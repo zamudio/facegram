@@ -3,12 +3,6 @@ class PostsController < ApplicationController
     # before_action :owned_post, only: [:edit, :update, :destroy]
     # before_action :redirect_user
 
-    def index
-        #all posts from a user
-        @user = find_user
-        @posts = Post.where(user_id: session[:user_id])
-    end
-
     def show
         #show a specific post from a user
         @post = Post.find(params[:id])
@@ -42,7 +36,7 @@ class PostsController < ApplicationController
     def destroy
         @post = Post.find(params[:id])
         @post.destroy
-        render :index
+        redirect_to '/home'
     end
 
     private
