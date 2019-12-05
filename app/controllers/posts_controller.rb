@@ -1,5 +1,7 @@
 class PostsController < ApplicationController
-    before_action :redirect_user
+    # helper_method :current_user
+    # before_action :owned_post, only: [:edit, :update, :destroy]
+    # before_action :redirect_user
 
     def index
         #all posts from a user
@@ -10,7 +12,7 @@ class PostsController < ApplicationController
     def show
         #show a specific post from a user
         @post = Post.find(params[:id])
-        # session[:post_id] = @post.id
+        session[:post_id] = @post.id
     end
 
     def new
@@ -20,20 +22,28 @@ class PostsController < ApplicationController
 
     def create
         #create a new post
-        # @user = User.find(session[:user_id])
+        @user = find_user
         @post = Post.new(post_params)
+        @post.assign_attributes(user_id: @user.id)
         @post.save
-        redirect_to posts_path
-        # if @post.save
-        #     render :index
-        # else
-        #     render :new
-        # end
+        redirect_to '/home'
     end
 
-    # def destroy
-    #     #delete post, maybe?
-    # end
+    def edit
+        @post = Post.find(params[:id])
+        session[:post_id] = @post.id
+    end
+
+    def update
+        @post = Post.update(post_params)
+        redirect_to '/home'
+    end
+
+    def destroy
+        @post = Post.find(params[:id])
+        @post.destroy
+        render :index
+    end
 
     private
 
@@ -42,11 +52,18 @@ class PostsController < ApplicationController
     end
 
     def post_params
-        params.require(:post).permit(:caption, :user_id)
+        params.require(:post).permit(:caption)
     end
 
     def user_post
         @user = find_user
         post_params[:user_id] = @user.id
     end
+
+    # def owned_post
+    #     unless current_user == @post.user
+    #       flash[:alert] = "That post doesn't belong to you!"
+    #       redirect_to root_path
+    #     end
+    # end
 end
