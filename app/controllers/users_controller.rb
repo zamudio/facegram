@@ -20,7 +20,8 @@ class UsersController < ApplicationController
     end
 
     def update
-        @user = User.update(edit_user_params)
+        @user = User.find_by_id(params[:id])
+        @user.update_attributes(edit_user_params)
         redirect_to '/home'
     end
 

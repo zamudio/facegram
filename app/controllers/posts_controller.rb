@@ -12,6 +12,7 @@ class PostsController < ApplicationController
     def new
         #create a new post
         @post = Post.new
+        
     end
 
     def create
