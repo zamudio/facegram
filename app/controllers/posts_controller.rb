@@ -24,17 +24,19 @@ class PostsController < ApplicationController
     end
 
     def edit
+        # @user = User.find(session[:user_id]) #
+        # @post = Post.where(user_id: session[:user_id])
         @post = Post.find(params[:id])
-        session[:post_id] = @post.id
     end
 
     def update
-        @post = Post.update(post_params)
+        @post = Post.find_by_id(params[:id])
+        @post.update_attributes(post_params)
         redirect_to '/home'
     end
 
     def destroy
-        @post = Post.find(params[:id])
+        @post = Post.find_by_id(params[:id])
         @post.destroy
         redirect_to '/home'
     end
@@ -49,10 +51,10 @@ class PostsController < ApplicationController
         params.require(:post).permit(:caption)
     end
 
-    def user_post
-        @user = find_user
-        post_params[:user_id] = @user.id
-    end
+    # def user_post
+    #     @user = find_user
+    #     post_params[:user_id] = @user.id
+    # end
 
     # def owned_post
     #     unless current_user == @post.user

@@ -1,1 +1,14 @@
-<h1>Test Edit user</h1>
+<h2> Edit Your Profile </h2>
+<br>
+
+<%= form_for @user do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+    <br><br>
+
+    <%= f.label :username %>
+    <%= f.text_field :username %>
+    <br><br>
+
+    <%= f.submit "Finish Edit" %>
+<%end%>

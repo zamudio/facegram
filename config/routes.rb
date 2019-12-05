@@ -4,13 +4,12 @@ Rails.application.routes.draw do
 
   resources :posts, only: [:show, :new, :edit, :update, :destroy]
 
-  # resources :profiles, only: :index
+  resources :profiles, only: :index
   get '/home', to: 'profiles#index'
 
   resources :users, only: [:new, :create, :edit, :update, :destroy]
   get '/signup', to: 'users#new'
   post '/signup', to: 'users#create'
-  get '/user/:username', to: 'users#edit'
 
   get '/login', to: 'sessions#login'
   post '/login', to: 'sessions#create'
