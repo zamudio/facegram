@@ -1,12 +1,13 @@
 <h1> Welcome, <%= @user.username %>!</h1>
 
 <% if (@posts.length == 0) %>
-    <p>There are currently no posts! <%= link_to 'Create a Post', new_post_path %></p>
+    <p>There are currently no posts! <%# button_to 'Create a Post', new_post_path, :method => :get %></p>
 <% else %>
     <% @posts.each do |post| %>
-        <%= link_to post.caption, post_path(post) %>
+        <p><%= link_to post.caption, post_path(post) %></p>
     <% end %>
 <% end %>
 
 <br><br>
-<%= link_to "Log Out", logout_path %>
+<%= button_to 'Create a Post', new_post_path, :method => :get %>
+<%= button_to "Log Out", logout_path, :method => :get %>

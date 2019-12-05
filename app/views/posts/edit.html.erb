@@ -1,1 +1,11 @@
-<h1>EDIT TEST POST</h1>
+<h1>Edit Your Post</h1>
+
+<%= form_for @post do |f| %>
+    <%= f.label :post %>
+    <%= f.text_field :caption %>
+    <br><br>
+
+    <%# hashtag collection select  %>
+
+    <%= f.submit "Edit Post" %>
+<% end %>
