@@ -3,6 +3,10 @@ class PostsController < ApplicationController
     # before_action :owned_post, only: [:edit, :update, :destroy]
     # before_action :redirect_user
 
+    def index
+        @posts = Post.All
+    end
+
     def show
         #show a specific post from a user
         @post = Post.find(params[:id])
