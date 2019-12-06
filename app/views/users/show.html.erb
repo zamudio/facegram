@@ -1,0 +1,18 @@
+<%#= @user.avatar %>
+<h2><%= @user.username %></h2>
+<p><%= @user.name %></p>
+<p><%#= @user.bio %></p>
+<p>
+    All posts:
+    <br><br>
+    <% if (@posts.length == 0) %>
+        <p><%= @user.username %> has no posts!
+    <% else %>
+        <% @posts.each do |post| %>
+            <% if post.user.name == @user.name %>
+                <%= image_tag post.image %>
+                <p>@<%= post.user.name %> -- <%= post.caption %></p>
+            <% end %>
+        <% end %>
+    <% end %>
+</p>

@@ -1,13 +1,13 @@
 <h1> Welcome, <%= @user.name.titleize %>!</h1><br>
 
 <% if (@posts.length == 0) %>
-    <p>You have no posts! <%# button_to 'Create a Post', new_post_path, :method => :get %></p>
+    <p>You have no posts!</p>
 <% else %>
     <% @posts.each do |post| %>
         <%= link_to post_path(post) do %>
             <%= image_tag post.image %>
         <% end %>
-        <p>@<%= link_to post.user.name, users_path %> -- <%= post.caption %></p>
+        <p>@<%= link_to post.user.name, user_path(post.user_id) %> -- <%= post.caption %></p>
         <br><br>
     <% end %>
 <% end %>
