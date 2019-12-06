@@ -1,4 +1,4 @@
-<div class="container text-center">
+<div class="profile">
     <% if @post.user.name == current_user.name%>
         <%#= button_to 'Home', profiles_path, :method => :get %>
         <%= button_to "Edit Post", edit_post_path, :method => :get %>
@@ -8,8 +8,23 @@
     <% end %>
     <br><br>
 
-    <h2>@<%= @post.user.username %></h2>
-    <%= image_tag @post.image %>
-    <p><%= button_to 'Like', likes_path(@post), method: :put %><%= @post.likes_count %></p>
-    <p><%= @post.caption %></p>
+    <div class="profile-posts">
+        <div class="profile-post-spacing">
+            <div class="profile-post-username">
+                <%= image_tag @post.user.avatar, :class => "post-user-avatar" %>
+                @<%= link_to @post.user.username, user_path(@post.user_id) %>
+            </div>
+            <div class="profile-post-img">
+                <%= link_to post_path(@post) do %>
+                    <%= image_tag @post.image, :class => "img-post-resize" %>
+                <% end %>
+            </div>
+            <div class="profile-post-img-info">
+                <%= button_to 'Like', likes_path(@post), method: :put %>
+                Number of likes: <%= @post.likes_count %>
+                <br><br>
+                <%= @post.caption %>
+            </div>
+        </div>
+    </div>
 </div>

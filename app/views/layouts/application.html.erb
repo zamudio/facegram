@@ -9,7 +9,7 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body style="background-color:#F7F7EF">
     <nav class="navbar navbar-dark fixed-top" style="background-color: #104782;">
         <a class="navbar-brand" href="/home">Facegram</a>
         <div class="navbar-nav d-flex flex-row">
@@ -26,6 +26,7 @@
 
       <style>
         .img-circular{
+          padding: 25px;
           width: 300px;
           height: 300px;
           background-size: cover;
@@ -39,6 +40,58 @@
           width: 580px;
           height: 380px;
         }
+
+        .profile{
+          margin: auto;
+          font-family: "Verdana", sans-serif;
+        }
+
+        .profile-head{
+          padding: 50px;
+        }
+
+        .profile-user-info{
+          margin: auto;
+          width: 400px;
+        }
+
+        .profile-posts{
+          margin: auto;
+          width: 700px;
+        }
+
+        .profile-post-spacing{
+          margin: 75px;
+        }
+
+        .profile-post-username{
+          background: #EBEBD3;
+          width: 580px;
+          padding: 5px;
+          text-align: left;
+        }
+
+        .post-user-avatar{
+          padding: 5px;
+          width: 50px;
+          height: 50px;
+          background-size: cover;
+          display: center;
+          border-radius: 100px;
+          -webkit-border-radius: 100px;
+          -moz-border-radius: 100px;
+        }
+
+        .profile-post-img{
+          width: 580px;
+        }
+
+        .profile-post-img-info{
+          background: #EBEBD3;
+          text-align: left;
+          width: 580px;
+        }
+
       </style>
       <%= yield %>
   </body>
