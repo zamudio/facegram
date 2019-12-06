@@ -1,9 +1,9 @@
-<h1> Welcome, <%= @user.name.titleize %>! user_id: <%= session[:user_id] %></h1><br>
+<h1> Welcome, <%= @user.name.titleize %>!</h1><br>
 
 <% if (@posts.length == 0) %>
     <p>You have no posts!</p>
 <% else %>
-    <% @posts.each do |post| %>
+    <% @posts.reverse_each do |post| %>
         <%= link_to post_path(post) do %>
             <%= image_tag post.image %>
         <% end %>
