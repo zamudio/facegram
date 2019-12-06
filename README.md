@@ -1,24 +1,44 @@
-# README
+Module Two Final Project
+========================
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### Goal
 
-Things you may want to cover:
+* The goal of this project was to attempt to build out the backend of a             social media app. I wanted to challenge myself to work with multiple          models, multiple functions such as likes, follows, comments, etc.
 
-* Ruby version
+### Current Issues
 
-* System dependencies
+* validations isn't finished
+* restricting users to only editing their info/posts isn't finished
+* frontend isn't close to finished
 
-* Configuration
+### Installation
 
-* Database creation
+* Fork the repository
+* In your terminal:
+    * type 'bundle install' and hit enter
+    * type 'rake db:migrate' and hit enter
+    * type 'rake db:seed' and hit enter
+* After that, everything should be good to go
 
-* Database initialization
+### Running the program
 
-* How to run the test suite
+* Go to your browser and type 'http://localhost:3000'
 
-* Services (job queues, cache servers, search engines, etc.)
+### How to use the program
 
-* Deployment instructions
+* The initial page will be the login page
+* If you are not a current user, click signup and become one!
+* As a user...
+    * You can view all posts from all users
+    * You can click on the image to go to see the post with comments
+    * You can click on the username of a person who posted and see their            profile
+    * You can edit posts you made
+    * You can delete posts
+    * You can like posts
+    * You can follow others
+    * You can leave comments on posts
+* And more...
 
-* ...
+### Acknowledgements
+
+* I'd like to thank every one associated with Mod2 for all their support, help, and encouragment
