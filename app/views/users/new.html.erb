@@ -18,6 +18,14 @@
     <%= f.password_field :password_confirmation %>
     <br><br>
 
+    <%= f.label :bio %>
+    <%= f.text_area :bio %>
+    <br><br>
+
+    <%= f.label :avatar %>
+    <%= f.file_field :avatar %>
+    <br><br>
+
     <%= f.submit "Sign Up" %>
 <%end%>
 

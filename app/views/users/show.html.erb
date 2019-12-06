@@ -1,7 +1,8 @@
-<%#= @user.avatar %>
+<%= image_tag @user.avatar if @user.avatar.attached? %>
 <h2><%= @user.username %></h2>
 <p><%= @user.name %></p>
-<p><%#= @user.bio %></p>
+<p><%= @user.bio %></p>
+
 <p>
     All posts:
     <br><br>
@@ -10,10 +11,14 @@
             <%= image_tag post.image %>
             <p><%= button_to 'Like', likes_path(post), method: :put %><%= post.likes_count %></p>
             <p><%= post.caption %></p>
-        <% else %>
-            <p><%= @user.username %> has no posts!</p>
         <% end %>
     <% end %>
 
 <br><br>
-<%= button_to 'Home', profiles_path, :method => :get %>
+<% if @user.name == current_user.name%>
+    <%= button_to 'Home', profiles_path, :method => :get %>
+    <%= button_to "Edit", edit_post_path, :method => :get %>
+    <%= button_to 'Delete', @post, :method => :delete %>
+<% else %>
+    <%= button_to 'Home', profiles_path, :method => :get %>
+<% end %>

@@ -29,12 +29,12 @@ class UsersController < ApplicationController
 
     def update
         @user = current_user
-
-        if @user.update_attributes(edit_user_params)
-            redirect_to '/home'
-        else
-            redirect_to edit_post_path
-        end
+        @user.update_attributes(edit_user_params)
+        @user.avatar.attach(params[:avatar])
+        redirect_to '/home'
+        # else
+        #     redirect_to edit_post_path
+        # end
     end
 
     # def destroy
@@ -47,10 +47,10 @@ class UsersController < ApplicationController
     private
 
     def user_params
-        params.require(:user).permit(:name, :username, :password, :password_confirmation)
+        params.require(:user).permit(:name, :username, :password, :password_confirmation, :bio, :avatar)
     end
 
     def edit_user_params
-        params.require(:user).permit(:name, :username)
+        params.require(:user).permit(:name, :username, :bio, :avatar)
     end
 end
