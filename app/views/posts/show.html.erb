@@ -1,6 +1,6 @@
 <%= image_tag @post.image %>
-<br>
-<%= @post.caption %>
+<p><%= button_to 'Like', likes_path(@post), method: :put %><%= @post.likes_count %></p>
+<p><%= @post.caption %></p>
 <br><br>
 
 <!-- button_to defaults to post, so must change to GET -->
