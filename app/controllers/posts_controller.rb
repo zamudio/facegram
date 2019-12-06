@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+    helper_method :logged_in?
     # helper_method :current_user
     # before_action :owned_post, only: [:edit, :update, :destroy]
     # before_action :redirect_user
@@ -11,6 +12,7 @@ class PostsController < ApplicationController
         #show a specific post from a user
         @post = Post.find(params[:id])
         session[:post_id] = @post.id
+        @current_user = current_user
     end
 
     def new
@@ -54,6 +56,12 @@ class PostsController < ApplicationController
 
     def post_params
         params.require(:post).permit(:caption, :image)
+    end
+
+    def current_user
+        if logged_in?
+            @user = User.find_by(params[:username])
+        end
     end
 
     # def user_post
