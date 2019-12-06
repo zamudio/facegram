@@ -5,18 +5,15 @@
 <p>
     All posts:
     <br><br>
-    <% if (@posts.length == 0) %>
-        <p><%= @user.username %> has no posts!
-    <% else %>
-        <% @posts.each do |post| %>
-            <% if post.user_id == @user.id %>
-                <%= image_tag post.image %>
-                <p><%= button_to 'Like', likes_path(post), method: :put %><%= post.likes_count %></p>
-                <p><%= post.caption %></p>
-            <% end %>
+    <% @posts.each do |post| %>
+        <% if post.user_id == @user.id %>
+            <%= image_tag post.image %>
+            <p><%= button_to 'Like', likes_path(post), method: :put %><%= post.likes_count %></p>
+            <p><%= post.caption %></p>
+        <% else %>
+            <p><%= @user.username %> has no posts!</p>
         <% end %>
     <% end %>
-</p>
 
 <br><br>
 <%= button_to 'Home', profiles_path, :method => :get %>
