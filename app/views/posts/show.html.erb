@@ -1,4 +1,4 @@
-<div class="profile">
+<div class="profile text-center">
     <% if @post.user.name == current_user.name%>
         <%#= button_to 'Home', profiles_path, :method => :get %>
         <%= button_to "Edit Post", edit_post_path, :method => :get %>

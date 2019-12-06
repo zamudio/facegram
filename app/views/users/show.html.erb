@@ -1,24 +1,41 @@
 <div class="profile text-center">
-    <br><br><br>
-    <%= image_tag @user.avatar, :class=> "img-circular" if @user.avatar.attached? %>
-    <h2><%= @user.username %></h2>
-    <p>
-        name: <%= @user.name %>
+    <div class="profile-head">
         <br>
-        bio: <%= @user.bio %>
-    </p>
-
-    <p>
-        <br><br><br>
-        <% @posts.reverse_each do |post| %>
-            <% if post.user_id == @user.id %>
-                <%= link_to post_path(post) do %>
-                    <%= image_tag post.image, :class => "img-post-resize" %>
+        <%= image_tag @user.avatar, :class => "img-circular" if @user.avatar.attached? %>
+        <div class="profile-user-info">
+            <h2><%= @user.username %></h2>
+            <p>
+                name: <%= @user.name %>
+                <br>
+                bio: <%= @user.bio %>
+            </p>
+        </div>
+    </div>
+    <div class="profile-posts">
+        <% if (@posts.length == 0) %>
+            <p>There are no posts :(</p>
+        <% else %>
+            <% @posts.reverse_each do |post| %>
+                <% if post.user_id == @user.id %>
+                    <div class="profile-post-spacing">
+                        <div class="profile-post-username">
+                            <%= image_tag post.user.avatar, :class => "post-user-avatar" %>
+                            @<%= link_to post.user.username, user_path(post.user_id) %>
+                        </div>
+                        <div class="profile-post-img">
+                            <%= link_to post_path(post) do %>
+                                <%= image_tag post.image, :class => "img-post-resize" %>
+                            <% end %>
+                        </div>
+                        <div class="profile-post-img-info">
+                            <%= button_to 'Like', likes_path(post), method: :put %>
+                            Number of likes: <%= post.likes_count %>
+                            <br><br>
+                            <%= post.caption %>
+                        </div>
+                    </div>
                 <% end %>
-                <p><%= button_to 'Like', likes_path(post), method: :put %><%= post.likes_count %></p>
-                    <%= post.caption %>
-                <br><br><br>
             <% end %>
         <% end %>
-    </p>
+    </div>
 </div>
