@@ -48,6 +48,12 @@ class PostsController < ApplicationController
         redirect_to '/home'
     end
 
+    def likes
+        @post = Post.find(params[:id])
+        @post.increment!(:likes_count)
+        redirect_to '/home'
+    end
+
     private
 
     def find_user
@@ -55,7 +61,7 @@ class PostsController < ApplicationController
     end
 
     def post_params
-        params.require(:post).permit(:caption, :image)
+        params.require(:post).permit(:caption, :image, :likes_count)
     end
 
     def current_user

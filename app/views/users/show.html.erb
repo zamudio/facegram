@@ -11,7 +11,8 @@
         <% @posts.each do |post| %>
             <% if post.user.name == @user.name %>
                 <%= image_tag post.image %>
-                <p>@<%= post.user.name %> -- <%= post.caption %></p>
+                <p><%= button_to 'Like', likes_path(post), method: :put %><%= post.likes_count %></p>
+                <p><%= post.caption %></p>
             <% end %>
         <% end %>
     <% end %>

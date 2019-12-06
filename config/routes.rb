@@ -14,4 +14,9 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#login'
   post '/login', to: 'sessions#create'
   get '/logout', to: 'sessions#logout', as: 'logout'
+
+
+
+
+  put '/posts/:id/likes', to: 'posts#likes', as: 'likes'
 end
