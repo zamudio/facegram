@@ -32,6 +32,12 @@ gem 'activerecord-reset-pk-sequence'
 # gem 'image_processing', '~> 1.2'
 gem 'activestorage'
 
+# db:seed pk-reset
+gem 'activerecord-reset-pk-sequence'
+
+# Faker data
+gem 'faker'
+
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false

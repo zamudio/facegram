@@ -30,7 +30,7 @@ class UsersController < ApplicationController
     def update
         @user = current_user
         @user.update_attributes(edit_user_params)
-        @user.avatar.attach(params[:avatar])
+        # @user.avatar.attach(params[:avatar])
         redirect_to '/home'
         # else
         #     redirect_to edit_post_path
