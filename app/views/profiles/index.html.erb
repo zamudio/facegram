@@ -1,4 +1,10 @@
-<h1> Welcome, <%= @user.name.titleize %>!</h1><br>
+<h1> Welcome, <%= @user.name.titleize %>!</h1>
+
+<br><br>
+<%= button_to 'Create a Post', new_post_path(@post), :method => :get %>
+<%= button_to 'Edit Profile', edit_user_path(@user.id), :method => :get %>
+<%= button_to 'Log Out', logout_path, :method => :get %>
+<br><br>
 
 <% if (@posts.length == 0) %>
     <p>There are no posts :(</p>
@@ -12,8 +18,3 @@
         <br><br>
     <% end %>
 <% end %>
-
-<br><br>
-<%= button_to 'Create a Post', new_post_path(@post), :method => :get %>
-<%= button_to 'Edit Profile', edit_user_path(@user.id), :method => :get %>
-<%= button_to 'Log Out', logout_path, :method => :get %>

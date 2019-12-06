@@ -43,6 +43,7 @@ class PostsController < ApplicationController
     end
 
     def likes
+        # liking from post sends you back to home
         @post = post_find
         @post.increment!(:likes_count)
         redirect_to '/home'
