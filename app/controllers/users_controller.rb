@@ -1,8 +1,10 @@
 class UsersController < ApplicationController
+    helper_method :current_user
+    before_action :redirect_user, except: [:new, :create]
+
     def show
         @posts = Post.all
         @user = User.find(params[:id])
-        # session[:user_id] = @user.id
     end
 
     def new
@@ -16,26 +18,31 @@ class UsersController < ApplicationController
             session[:user_id] = @user.id
             redirect_to '/home'
         else
+            # flash message
             redirect_to '/signup'
         end
     end
 
     def edit
-        @user = User.find(params[:id])
-        session[:user_id] = @user.id
+        @user = current_user
     end
 
     def update
-        @user = User.find_by_id(params[:id])
-        @user.update_attributes(edit_user_params)
-        redirect_to '/home'
+        @user = current_user
+
+        if @user.update_attributes(edit_user_params)
+            redirect_to '/home'
+        else
+            redirect_to edit_post_path
+        end
     end
 
-    def destroy
-        @user = User.find(params[:id])
-        @user.destroy
-        redirect_to '/login'
-    end
+    # def destroy
+    #     # @user = User.find(params[:id])
+    #     @user = current_user
+    #     @user.destroy
+    #     redirect_to '/login'
+    # end
 
     private
 

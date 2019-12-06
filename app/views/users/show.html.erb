@@ -9,7 +9,7 @@
         <p><%= @user.username %> has no posts!
     <% else %>
         <% @posts.each do |post| %>
-            <% if post.user.name == @user.name %>
+            <% if post.user_id == @user.id %>
                 <%= image_tag post.image %>
                 <p><%= button_to 'Like', likes_path(post), method: :put %><%= post.likes_count %></p>
                 <p><%= post.caption %></p>

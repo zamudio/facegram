@@ -1,8 +1,6 @@
 class ApplicationController < ActionController::Base
-    # helper_method :logged_in?
-
     def logged_in?
-        session[:user_id]
+        !!session[:user_id]
     end
 
     def redirect_user
@@ -13,7 +11,7 @@ class ApplicationController < ActionController::Base
 
     def current_user
         if logged_in?
-            User.find(session[:id])
+            User.find(session[:user_id])
         end
     end
 end

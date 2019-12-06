@@ -1,6 +1,5 @@
 class SessionsController < ApplicationController
-    def login       
-        # new
+    def new
     end
 
     def create
@@ -8,19 +7,15 @@ class SessionsController < ApplicationController
 
         if @user && @user.authenticate(params[:password])
             session[:user_id] = @user.id
-            redirect_to home_path     # user_path => user#show?
+            redirect_to '/home'
         else
             # flash[:alert] = "Oops! That login wasn't quite right... Try again!"
-            redirect_to login_path       # '/login'
+            redirect_to '/login'
         end
     end
 
-    def logout      # destroy
-        session.clear
-        redirect_to login_path     # '/login'
-    end
-
-    def current_user
-        @user = User.find(session[:user_id])
+    def logout
+        session.delete :user_id
+        redirect_to login_path
     end
 end
