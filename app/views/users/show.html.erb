@@ -1,10 +1,12 @@
 <%= image_tag @user.avatar if @user.avatar.attached? %>
 <h2><%= @user.username %></h2>
-<p><%= @user.name %></p>
-<p><%= @user.bio %></p>
+<p>
+    name: <%= @user.name %>
+    <br>
+    bio: <%= @user.bio %>
+</p>
 
 <p>
-    All posts:
     <br><br>
     <% @posts.each do |post| %>
         <% if post.user_id == @user.id %>
@@ -17,8 +19,7 @@
 <br><br>
 <% if @user.name == current_user.name%>
     <%= button_to 'Home', profiles_path, :method => :get %>
-    <%= button_to "Edit", edit_post_path, :method => :get %>
-    <%= button_to 'Delete', @post, :method => :delete %>
+    <%= button_to 'Edit Profile', edit_user_path, :method => :get %>
 <% else %>
     <%= button_to 'Home', profiles_path, :method => :get %>
 <% end %>

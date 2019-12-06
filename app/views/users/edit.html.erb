@@ -14,7 +14,7 @@
     <%= f.text_area :bio %>
     <br><br>
 
-    <%= f.label :avatar %>
+    <%= f.label :picture %>
     <%= f.file_field :avatar %>
     <br><br>
 
@@ -23,3 +23,4 @@
 
 <br><br>
 <%= button_to 'Home', profiles_path, :method => :get %>
+<%= button_to 'Back to Profile', user_path, :method => :get %>
