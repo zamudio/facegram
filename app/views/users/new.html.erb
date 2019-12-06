@@ -1,33 +1,36 @@
-<h2> Create An Account</h2>
-<br>
+<div class="container text-center">
+    <br><br><br>
+    <h2> Create An Account</h2>
+    <br>
 
-<%= form_for @user do |f| %>
-    <%= f.label :name %>
-    <%= f.text_field :name %>
+    <%= form_for @user do |f| %>
+        <%= f.label :name %>
+        <%= f.text_field :name %>
+        <br><br>
+
+        <%= f.label :username %>
+        <%= f.text_field :username %>
+        <br><br>
+
+        <%= f.label :password %>
+        <%= f.password_field :password %>
+        <br><br>
+
+        <%= f.label :password_confirmation %>
+        <%= f.password_field :password_confirmation %>
+        <br><br>
+
+        <%= f.label :bio %>
+        <%= f.text_area :bio %>
+        <br><br>
+
+        <%= f.label :picture %>
+        <%= f.file_field :avatar %>
+        <br><br>
+
+        <%= f.submit "Sign Up" %>
+    <%end%>
+
     <br><br>
-
-    <%= f.label :username %>
-    <%= f.text_field :username %>
-    <br><br>
-
-    <%= f.label :password %>
-    <%= f.password_field :password %>
-    <br><br>
-
-    <%= f.label :password_confirmation %>
-    <%= f.password_field :password_confirmation %>
-    <br><br>
-
-    <%= f.label :bio %>
-    <%= f.text_area :bio %>
-    <br><br>
-
-    <%= f.label :picture %>
-    <%= f.file_field :avatar %>
-    <br><br>
-
-    <%= f.submit "Sign Up" %>
-<%end%>
-
-<br><br>
-<%= link_to "Back to Login", login_path %>
+    <%= link_to "Back to Login", login_path %>
+</div>

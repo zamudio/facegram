@@ -1,13 +1,15 @@
-<% if @post.user.name == current_user.name%>
-    <%= button_to 'Home', profiles_path, :method => :get %>
-    <%= button_to "Edit", edit_post_path, :method => :get %>
-    <%= button_to 'Delete', @post, :method => :delete %>
-<% else %>
-    <%= button_to 'Home', profiles_path, :method => :get %>
-<% end %>
-<br><br>
+<div class="container text-center">
+    <% if @post.user.name == current_user.name%>
+        <%#= button_to 'Home', profiles_path, :method => :get %>
+        <%= button_to "Edit Post", edit_post_path, :method => :get %>
+        <%= button_to 'Delete Post', @post, :method => :delete %>
+    <% else %>
+        <%#= button_to 'Home', profiles_path, :method => :get %>
+    <% end %>
+    <br><br>
 
-<h2>@<%= @post.user.username %></h2>
-<%= image_tag @post.image %>
-<p><%= button_to 'Like', likes_path(@post), method: :put %><%= @post.likes_count %></p>
-<p><%= @post.caption %></p>
+    <h2>@<%= @post.user.username %></h2>
+    <%= image_tag @post.image %>
+    <p><%= button_to 'Like', likes_path(@post), method: :put %><%= @post.likes_count %></p>
+    <p><%= @post.caption %></p>
+</div>

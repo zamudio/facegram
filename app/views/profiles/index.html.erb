@@ -1,20 +1,28 @@
-<h1> Welcome, <%= @user.name.titleize %>!</h1>
+<div class="container text-center">
+    <br><br><br>
+    <%= image_tag @user.avatar, :class => "img-circular" if @user.avatar.attached? %>
+    <h2><%= @user.username %></h2>
+    <p>
+        name: <%= @user.name %>
+        <br>
+        bio: <%= @user.bio %>
+    </p>
+    <br><br><br><br>
 
-<br><br>
-<%= button_to 'Create a Post', new_post_path(@post), :method => :get %>
-<%= button_to 'Edit Profile', edit_user_path(@user.id), :method => :get %>
-<%= button_to 'Log Out', logout_path, :method => :get %>
-<br><br>
+    <%#= button_to 'Create a Post', new_post_path(@post), :method => :get %>
+    <%#= button_to 'Edit Profile', edit_user_path(@user.id), :method => :get %>
+    <%#= button_to 'Log Out', logout_path, :method => :get %>
 
-<% if (@posts.length == 0) %>
-    <p>There are no posts :(</p>
-<% else %>
-    <% @posts.reverse_each do |post| %>
-        <%= link_to post_path(post) do %>
-            <%= image_tag post.image %>
+    <% if (@posts.length == 0) %>
+        <p>There are no posts :(</p>
+    <% else %>
+        <% @posts.reverse_each do |post| %>
+            <%= link_to post_path(post) do %>
+                <%= image_tag post.image, :class => "img-post-resize" %>
+            <% end %>
+            <p><%= button_to 'Like', likes_path(post), method: :put %><%= post.likes_count %></p>
+            <p>@<%= link_to post.user.username, user_path(post.user_id) %> -- <%= post.caption %></p>
+            <br><br>
         <% end %>
-        <p><%= button_to 'Like', likes_path(post), method: :put %><%= post.likes_count %></p>
-        <p>@<%= link_to post.user.username, user_path(post.user_id) %> -- <%= post.caption %></p>
-        <br><br>
     <% end %>
-<% end %>
+</div>

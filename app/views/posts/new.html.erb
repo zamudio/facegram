@@ -1,13 +1,19 @@
-<%= form_for @post do |f| %>
-    <%= f.label :image %>
-    <%= f.file_field :image %>
+<div class="container text-center">
+    <br><br><br>
+    <h1>Create A Post!</h1>
     <br><br>
 
-    <%= f.label :caption %>
-    <%= f.text_field :caption %>
-    <br><br>
+    <%= form_for @post do |f| %>
+        <%= f.label :caption %>
+        <%= f.text_field :caption %>
+        <br><br>
+        
+        <%= f.label :image %>
+        <%= f.file_field :image %>
+        <br><br>
 
-    <%# hashtag collection select  %>
+        <%# hashtag collection select  %>
 
-    <%= f.submit "Create Post" %>
-<% end %>
+        <%= f.submit "Create Post" %>
+    <% end %>
+</div>

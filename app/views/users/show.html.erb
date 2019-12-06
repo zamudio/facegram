@@ -1,28 +1,24 @@
-<% if @user.name == current_user.name%>
-    <%= button_to 'Home', profiles_path, :method => :get %>
-    <%= button_to 'Edit Profile', edit_user_path, :method => :get %>
-<% else %>
-    <%= button_to 'Home', profiles_path, :method => :get %>
-<% end %>
-<br><br>
+<div class="container text-center">
+    <br><br><br>
+    <%= image_tag @user.avatar, :class=> "img-circular" if @user.avatar.attached? %>
+    <h2><%= @user.username %></h2>
+    <p>
+        name: <%= @user.name %>
+        <br>
+        bio: <%= @user.bio %>
+    </p>
 
-<%= image_tag @user.avatar if @user.avatar.attached? %>
-<h2><%= @user.username %></h2>
-<p>
-    name: <%= @user.name %>
-    <br>
-    bio: <%= @user.bio %>
-</p>
-
-<p>
-    <br><br>
-    <% @posts.reverse_each do |post| %>
-        <% if post.user_id == @user.id %>
-            <%= link_to post_path(post) do %>
-                <%= image_tag post.image %>
+    <p>
+        <br><br><br>
+        <% @posts.reverse_each do |post| %>
+            <% if post.user_id == @user.id %>
+                <%= link_to post_path(post) do %>
+                    <%= image_tag post.image, :class => "img-post-resize" %>
+                <% end %>
+                <p><%= button_to 'Like', likes_path(post), method: :put %><%= post.likes_count %></p>
+                    <%= post.caption %>
+                <br><br><br>
             <% end %>
-            <p><%= button_to 'Like', likes_path(post), method: :put %><%= post.likes_count %></p>
-            <p><%= post.caption %></p>
         <% end %>
-    <% end %>
-</p>
+    </p>
+</div>

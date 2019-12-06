@@ -1,14 +1,16 @@
-<h1>Edit Your Post</h1>
-
-<%= form_for @post do |f| %>
-    <%= f.label :post %>
-    <%= f.text_field :caption %>
+<div class="container text-center">
+    <br><br><br>
+    <h1>Edit Your Post</h1>
     <br><br>
 
-    <%# hashtag collection select  %>
+    <%= form_for @post do |f| %>
+        <%= f.label :post %>
+        <%= f.text_field :caption %>
+        <br><br>
 
-    <%= f.submit "Edit Post" %>
-<% end %>
+        <%= f.submit "Edit Post" %>
+    <% end %>
 
-<br>
-<%= button_to 'Delete Post', @post, :method => :delete %>
+    <br>
+    <%= button_to 'Delete Post', @post, :method => :delete %>
+</div>

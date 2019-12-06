@@ -1,26 +1,29 @@
-<h2> Edit Your Profile </h2>
-<br>
+<div class="container text-center">
+    <br><br><br>
+    <h2> Edit Your Profile </h2>
+    <br>
 
-<%= form_for @user do |f| %>
-    <%= f.label :name %>
-    <%= f.text_field :name %>
+    <%= form_for @user do |f| %>
+        <%= f.label :name %>
+        <%= f.text_field :name %>
+        <br><br>
+
+        <%= f.label :username %>
+        <%= f.text_field :username %>
+        <br><br>
+
+        <%= f.label :bio %>
+        <%= f.text_area :bio %>
+        <br><br>
+
+        <%= f.label :picture %>
+        <%= f.file_field :avatar %>
+        <br><br>
+
+        <%= f.submit "Finish Edit" %>
+    <%end%>
+
     <br><br>
-
-    <%= f.label :username %>
-    <%= f.text_field :username %>
-    <br><br>
-
-    <%= f.label :bio %>
-    <%= f.text_area :bio %>
-    <br><br>
-
-    <%= f.label :picture %>
-    <%= f.file_field :avatar %>
-    <br><br>
-
-    <%= f.submit "Finish Edit" %>
-<%end%>
-
-<br><br>
-<%= button_to 'Home', profiles_path, :method => :get %>
-<%= button_to 'Back to Profile', user_path, :method => :get %>
+    <%#= button_to 'Home', profiles_path, :method => :get %>
+    <%= button_to 'Back to My Profile', user_path, :method => :get %>
+</div>

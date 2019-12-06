@@ -10,6 +10,36 @@
   </head>
 
   <body>
-    <%= yield %>
+    <nav class="navbar navbar-dark fixed-top" style="background-color: #104782;">
+        <a class="navbar-brand" href="/home">Facegram</a>
+        <div class="navbar-nav d-flex flex-row">
+          <% if logged_in? %>
+            <a class="nav-item nav-link active px-4" href="/home">Home</a>
+            <a class="nav-item nav-link active px-4" href="/posts/new">Create Post</a>
+            <a class="nav-item nav-link active px-4" href="/users/<%= session[:user_id] %>/edit">Edit Profile</a>
+            <a class="nav-item nav-link active px-4" href="/logout">Logout</a>
+          <% else %>
+            <a class="nav-item nav-link active px-4" href="/login">Login</a>
+          <% end %>
+        </div>
+      </nav>
+
+      <style>
+        .img-circular{
+          width: 300px;
+          height: 300px;
+          background-size: cover;
+          display: center;
+          border-radius: 100px;
+          -webkit-border-radius: 100px;
+          -moz-border-radius: 100px;
+        }
+
+        .img-post-resize{
+          width: 580px;
+          height: 380px;
+        }
+      </style>
+      <%= yield %>
   </body>
 </html>

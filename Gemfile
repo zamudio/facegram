@@ -26,7 +26,8 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'activerecord-reset-pk-sequence'
 
 # bootstrap
-# gem 'bootstrap'
+gem 'bootstrap'
+gem 'jquery-rails'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
