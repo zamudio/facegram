@@ -1,29 +1,38 @@
 <div class="profile text-center">
     <% if @post.user.name == current_user.name%>
-        <%#= button_to 'Home', profiles_path, :method => :get %>
-        <%= button_to "Edit Post", edit_post_path, :method => :get %>
-        <%= button_to 'Delete Post', @post, :method => :delete %>
+    <%#= button_to 'Home', profiles_path, :method => :get %>
+    <%= button_to "Edit Post", edit_post_path, :method => :get %>
+    <%= button_to 'Delete Post', @post, :method => :delete %>
     <% else %>
-        <%#= button_to 'Home', profiles_path, :method => :get %>
+    <%#= button_to 'Home', profiles_path, :method => :get %>
     <% end %>
     <br><br>
 
     <div class="profile-posts">
-        <div class="profile-post-spacing">
-            <div class="profile-post-username">
+        <%#= <div class="profile-post-spacing"> %>
+        <div class="card mb-5 mt-5">
+            <%#= <div class="profile-post-username"> %>
+            <div class="card-header text-left">
                 <%= image_tag @post.user.avatar, :class => "post-user-avatar" %>
                 @<%= link_to @post.user.username, user_path(@post.user_id) %>
             </div>
-            <div class="profile-post-img">
+            <%#= <div class="profile-post-img"> %>
+            <div class="card-img">
                 <%= link_to post_path(@post) do %>
-                    <%= image_tag @post.image, :class => "img-post-resize" %>
+                <%= image_tag @post.image, :class => "img-post-resize" %>
                 <% end %>
             </div>
-            <div class="profile-post-img-info">
-                <%= button_to 'Like', likes_path(@post), method: :put %>
-                Number of likes: <%= @post.likes_count %>
-                <br><br>
-                <%= @post.caption %>
+            <%#= <div class="profile-post-img-info"> %>
+            <div class="card-title">
+                <div class="text-left mt-2 pr-5 pl-5">
+                    <%= button_to 'Like', likes_path(@post), method: :put %>
+                    Number of likes: <%= @post.likes_count %>
+                </div>
+                <div class="card-text">
+                    <div class="text-left mt-3 mb-3 pr-5 pl-5">
+                        <%= @post.caption %>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
