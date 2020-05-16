@@ -28,10 +28,10 @@
                     <%= button_to 'Like', likes_path(@post), method: :put %>
                     Number of likes: <%= @post.likes_count %>
                 </div>
-                <div class="card-text">
-                    <div class="text-left mt-3 mb-3 pr-5 pl-5">
-                        <%= @post.caption %>
-                    </div>
+            </div>
+            <div class="card-text">
+                <div class="text-left mt-3 mb-3 pr-5 pl-5">
+                    <%= @post.caption %>
                 </div>
             </div>
         </div>
